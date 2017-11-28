@@ -31,7 +31,7 @@ read_lit_gs <-
         fullRef = `Full reference: APA style`,
         # Timestamp = Timestamp,
         idName = `Reference code: Autor et al. (YEAR). Title ... (Shortened)`,
-        readBy = `Submitted by:`,
+        readBy = `DOI:`,
         idFull = `Full reference: APA style`,
         message = `Takeaway message`,
         keyWords = `Keywords (separated by semicolon)`,
