@@ -42,7 +42,7 @@ ui <- fluidPage(# Application title
     ),
     tabPanel(
       "Reseqrch question",
-      actionButton("click", "Reload literature data", icon("refresh")),
+      actionButton("click2", "Reload literature data", icon("refresh")),
       collapsibleTreeOutput("question", height = "800px", width = "1200px")
     )
   )))
@@ -62,7 +62,7 @@ server <- function(input, output) {
                       })
                     })
   values$questionPlot <-
-    eventReactive(input$click,
+    eventReactive(input$click2,
                   {
                         withProgress(message = '(Re-) Generating tree', value = 0.1, {
                           incProgress(0.1, detail = paste("Loading data from Google"))
