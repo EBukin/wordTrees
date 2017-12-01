@@ -5,8 +5,8 @@ account: eduardbukin
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 242517
-bundleId: 1108123
+bundleId: 1108132
 url: https://eduardbukin.shinyapps.io/WordTreeApp/
-when: 1512117614.26755
+when: 1512118171.96855
 asMultiple: FALSE
 asStatic: FALSE

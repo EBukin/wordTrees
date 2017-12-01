@@ -62,10 +62,10 @@ server <- function(input, output) {
     eventReactive(input$click,
                   {
                     withProgress(message = '(Re-) Generating tree', value = 0.1, {
-                      incProgress(0.1, detail = paste("<br>Loading data from Google"))
+                      incProgress(0.1, detail = paste(" Loading data from Google"))
                       value <- read_lit_gs()
-                      incProgress(0.2, detail = paste("<br>Loading data from Google"))
-                      incProgress(0.5, detail = paste("<br>Building the tree"))
+                      incProgress(0.2, detail = paste(" Loading data from Google"))
+                      incProgress(0.5, detail = paste(" Building the tree"))
                       biuldBigTree(value)
                       })
                     })
@@ -73,10 +73,10 @@ server <- function(input, output) {
     eventReactive(input$click1,
                   {
                     withProgress(message = '(Re-) Generating tree', value = 0.1, {
-                      incProgress(0.1, detail = paste("<br>Loading data from Google"))
+                      incProgress(0.1, detail = paste(" Loading data from Google"))
                       value <- read_lit_gs()
-                      incProgress(0.2, detail = paste("<br>Loading data from Google"))
-                      incProgress(0.1, detail = paste("<br>Building the tree"))
+                      incProgress(0.2, detail = paste(" Loading data from Google"))
+                      incProgress(0.1, detail = paste(" Building the tree"))
                       biuldBigTree(value,"Question", "questTags", "quest")
                     })
                   })
@@ -84,10 +84,10 @@ server <- function(input, output) {
     eventReactive(input$click2,
                   {
                     withProgress(message = '(Re-) Generating tree', value = 0.1, {
-                      incProgress(0.1, detail = paste("Loading data from Google"))
+                      incProgress(0.1, detail = paste(" Loading data from Google"))
                       value <- read_lit_gs()
-                      incProgress(0.2, detail = paste("Loading data from Google"))
-                      incProgress(0.1, detail = paste("Building the tree"))
+                      incProgress(0.2, detail = paste(" Loading data from Google"))
+                      incProgress(0.1, detail = paste(" Building the tree"))
                       biuldBigTree(value,"Data", "dataTags", "data")
                     })
                   })
