@@ -34,18 +34,26 @@ biuldBigTree <- function(value, rootName = "Methods", tag1 = "methTags", tag2 = 
 ui <- fluidPage(# Application title
   titlePanel("Mind maps from literature Reviews"),
   
-  mainPanel(tabsetPanel(
-    tabPanel(
-      "Methodology",
-      actionButton("click", "Reload literature data", icon("refresh")),
-      collapsibleTreeOutput("methodology", height = "800px", width = "1200px")
-    ),
-    tabPanel(
-      "Reseqrch question",
-      actionButton("click2", "Reload literature data", icon("refresh")),
-      collapsibleTreeOutput("question", height = "800px", width = "1200px")
+  mainPanel(
+    tabsetPanel(
+      tabPanel(
+        "Methodology",
+        actionButton("click", "Reload literature data", icon("refresh")),
+        collapsibleTreeOutput("methodology", height = "800px", width = "1200px")
+        ),
+      tabPanel(
+        "Question",
+        actionButton("click1", "Reload literature data", icon("refresh")),
+        collapsibleTreeOutput("question", height = "800px", width = "1200px"))
+      ,
+      tabPanel(
+        "Data",
+        actionButton("click2", "Reload literature data", icon("refresh")),
+        collapsibleTreeOutput("dataTree", height = "800px", width = "1200px")
+        )
+      )
     )
-  )))
+  )
 
 # Define server logic required to draw a collapsible tree diagram
 server <- function(input, output) {
@@ -54,28 +62,39 @@ server <- function(input, output) {
     eventReactive(input$click,
                   {
                     withProgress(message = '(Re-) Generating tree', value = 0.1, {
-                      incProgress(0.1, detail = paste("Loading data from Google"))
+                      incProgress(0.1, detail = paste("<br>Loading data from Google"))
                       value <- read_lit_gs()
-                      incProgress(0.2, detail = paste("Loading data from Google"))
-                      incProgress(0.5, detail = paste("Building the tree"))
+                      incProgress(0.2, detail = paste("<br>Loading data from Google"))
+                      incProgress(0.5, detail = paste("<br>Building the tree"))
                       biuldBigTree(value)
                       })
                     })
   values$questionPlot <-
+    eventReactive(input$click1,
+                  {
+                    withProgress(message = '(Re-) Generating tree', value = 0.1, {
+                      incProgress(0.1, detail = paste("<br>Loading data from Google"))
+                      value <- read_lit_gs()
+                      incProgress(0.2, detail = paste("<br>Loading data from Google"))
+                      incProgress(0.1, detail = paste("<br>Building the tree"))
+                      biuldBigTree(value,"Question", "questTags", "quest")
+                    })
+                  })
+  values$dataPlot <-
     eventReactive(input$click2,
                   {
-                        withProgress(message = '(Re-) Generating tree', value = 0.1, {
-                          incProgress(0.1, detail = paste("Loading data from Google"))
-                          value <- read_lit_gs()
-                          incProgress(0.2, detail = paste("Loading data from Google"))
-                          incProgress(0.1, detail = paste("Building the tree"))
-                          biuldBigTree(value,"Question", "questTags", "quest")
-                          })
+                    withProgress(message = '(Re-) Generating tree', value = 0.1, {
+                      incProgress(0.1, detail = paste("Loading data from Google"))
+                      value <- read_lit_gs()
+                      incProgress(0.2, detail = paste("Loading data from Google"))
+                      incProgress(0.1, detail = paste("Building the tree"))
+                      biuldBigTree(value,"Data", "dataTags", "data")
                     })
+                  })
   
   output$methodology <- renderCollapsibleTree({values$methodsPlot()})
   output$question <- renderCollapsibleTree({values$questionPlot()})
-  
+  output$dataTree <- renderCollapsibleTree({values$dataPlot()})
   
 }
 
