@@ -1,0 +1,12 @@
+name: shynyWordTree
+title: shynyWordTree
+username:
+account: eduardbukin
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 239436
+bundleId: 1101186
+url: https://eduardbukin.shinyapps.io/shynywordtree/
+when: 1511875160.62633
+asMultiple: FALSE
+asStatic: FALSE
